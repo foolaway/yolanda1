@@ -1,0 +1,19 @@
+recipe: default.v1
+language: zh
+pipeline:
+- name: JiebaTokenizer
+- name: name: CountVectorsFeaturizer
+- name: RegexFeaturizer
+- name: DIETClassifier
+  epochs: 100
+  learning_rate: 0.001
+  tensorboard_log_directory: ./log
+- name: ResponseSelector
+  epochs: 100
+  learning_rate: 0.001
+- name: EntitySynonymMapper
+policies:
+- name: MemoizationPolicy
+- name: TEDPolicy
+- name: RulePolicy
+assistant_id: 20240315-184202-abstract-pier
